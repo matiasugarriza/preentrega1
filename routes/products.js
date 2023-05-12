@@ -1,7 +1,7 @@
 const express = require('express')
 const { Router } = express
 const router = new Router()
-const ProductManager = require("../ProductManager")
+const ProductManager = require("../scripts/ProductManager")
 
 
 router.get('/', (req, res) => {
@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
     })
 })
 
-router.delete('/deleteProduct/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     let manager = new ProductManager("./products.json")
     let productRes = manager.deleteProduct(req.params.id)
     productRes.then(product => {
@@ -48,7 +48,7 @@ router.delete('/deleteProduct/:id', (req, res) => {
     })
 })
 
-router.put('/updateProduct/:id', (req, res) => {
+router.put('/:id', (req, res) => {
     let manager = new ProductManager("./products.json")
     let productRes = manager.updateProduct(req.params.id, req.body.title, req.body.description, req.body.price, req.body.thumbnail, req.body.code, req.body.stock, req.body.status, req.body.category)
     productRes.then(product => {

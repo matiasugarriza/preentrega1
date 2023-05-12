@@ -1,13 +1,13 @@
 const express = require('express')
 const { Router } = express
 const router = new Router()
-const ProductManager = require("../ProductManager")
+const CartManager = require("../scripts/CartManager")
 
 router.get('/', (req, res) => {
-    let manager = new ProductManager("./carts.json")
-    const products = manager.getProducts()
-    products.then(product => {
-        let response = JSON.parse(product)
+    let manager = new CartManager("./carts.json")
+    const carts = manager.getCarts()
+    carts.then(cart => {
+        let response = JSON.parse(cart)
         res.send({ menssage: "Carritos", data: response })
     }).catch(err => {
         console.log(err)
@@ -15,47 +15,48 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-    let manager = new ProductManager("./carts.json")
+    let manager = new CartManager("./carts.json")
     let id = req.params.id
-    let productRes = manager.getProductById(id)
-    productRes.then(product => {
-        let response = product
-        res.send({ menssage: "Productos", data: response })
+    let productRes = manager.getCartById(id)
+    productRes.then(cart => {
+        let response = cart
+        res.send({ menssage: "Carritos:", data: response })
     }).catch(err => {
         console.log(err)
     })
 })
-
-router.post('/createProduct', (req, res) => {
-    let manager = new ProductManager("./carts.json")
-    let productRes = manager.addProduct(req.body.title, req.body.description, req.body.price, req.body.thumbnail, req.body.code, req.body.stock, req.body.status, req.body.category)
-    productRes.then(product => {
-        let response = product
+router.post('/', (req, res) => {
+    let manager = new CartManager("./carts.json")
+    let cartRes = manager.addCart()
+    cartRes.then(cart => {
+        let response = cart
         res.send({ data: response })
     }).catch(err => {
         console.log(err)
     })
 })
 
-router.delete('/deleteProduct/:id', (req, res) => {
-    let manager = new ProductManager("./carts.json")
-    let productRes = manager.deleteProduct(req.params.id)
-    productRes.then(product => {
-        let response = product
+router.delete('/:id', (req, res) => {
+    let manager = new CartManager("./carts.json")
+    let CartRes = manager.deleteCart(req.params.id)
+    CartRes.then(cart => {
+        let response = cart
         res.send({ data: response })
     }).catch(err => {
         console.log(err)
     })
 })
 
-router.put('/updateProduct/:id', (req, res) => {
-    let manager = new ProductManager("./carts.json")
-    let productRes = manager.updateProduct(req.params.id, req.body.title, req.body.description, req.body.price, req.body.thumbnail, req.body.code, req.body.stock, req.body.status, req.body.category)
-    productRes.then(product => {
-        let response = product
-        res.send({ data: response, message: 'Producto Actualizado' })
+router.put('/:cid/product/:pid', (req, res) => {
+    let manager = new CartManager("./carts.json")
+    let cartRes = manager.updateCart(req.params['cid'], req.params['pid'])
+    cartRes.then(cart => {
+        let response = cart
+        res.send({ data: response, message: 'Carrito Actualizado' })
     }).catch(err => {
         console.log(err)
     })
 })
 module.exports = router
+
+

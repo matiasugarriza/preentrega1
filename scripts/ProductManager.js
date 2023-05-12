@@ -55,16 +55,13 @@ class ProductManager {
         let products = JSON.parse(readFile)
         let productById = products.find((product) => product.id == id)
         if (productById) {
-          console.log(productById)
           return productById
         } else {
           let menssageId = `No se encuentra ningún producto con el ID: ${id}`
-          console.error(menssageId)
           return menssageId
         }
       } else {
         let errorId = 'El ID debe ser un número positivo'
-        console.error(errorId)
         return errorId
       }
 
