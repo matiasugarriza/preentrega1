@@ -8,26 +8,32 @@ class ProductManager {
     let readFile = await fs.promises.readFile(this.path, "utf-8")
     return readFile
   }
-  async addProduct(title, description, price, thumbnail, code, stock) {
+  async addProduct(title, description, price, thumbnail, code, stock, status, category) {
     try {
       let readFile = await fs.promises.readFile(this.path, "utf-8")
       let products = JSON.parse(readFile)
+      let id = products.length + 1
+      if(products.find((product)=> product.id == id)){
+        id++
+      }
       //Se agrega un nuevo producto
       const newProduct = {
-        id: products.length + 1,
+        id: id,
         title,
         description,
         price,
         thumbnail,
         code,
         stock,
+        status,
+        category
       };
       const existingProduct = products.find((product) => product.code === code)
       if (existingProduct) {
         let extProductError = `Error: Ya existe un producto con el código ${code}`
         return extProductError;
       } else {
-        if (!title || !description || !price || !thumbnail || !code || !stock) {
+        if (!title || !description || !price || !thumbnail || !code || !stock || !status || !category) {
           let validationProduct = "Error: Todos los campos son obligatorios."
           return validationProduct
         } else {
@@ -69,7 +75,7 @@ class ProductManager {
       return serverError
     }
   }
-  async updateProduct(id, title, description, price, thumbnail, code, stock) {
+  async updateProduct(id, title, description, price, thumbnail, code, stock, status, category) {
     try {
       let readFile = await fs.promises.readFile(this.path, "utf-8")
       let products = JSON.parse(readFile)
@@ -79,7 +85,7 @@ class ProductManager {
         return await notId
       } else {
         const indexProduct = products.indexOf(idProduct)
-        const editedProduct = { id, title, description, price, thumbnail, code, stock }
+        const editedProduct = { id, title, description, price, thumbnail, code, stock, status, category }
         if (indexProduct > -1) {
           products.splice(indexProduct, 1, editedProduct)
           fs.promises.writeFile(this.path, JSON.stringify(products, null, 2))

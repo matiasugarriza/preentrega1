@@ -6,7 +6,9 @@
     "price": 1000,
     "thumbnail": "Sin imagen",
     "code": "abc123",
-    "stock": 25
+    "stock": 25,
+    "status": true,
+    "category": "Yerba"
   },
   {
     "id": 2,
@@ -15,7 +17,9 @@
     "price": 1200,
     "thumbnail": "Sin imagen",
     "code": "def456",
-    "stock": 15
+    "stock": 15,
+    "status": true,
+    "category": "Yerba"
   },
   {
     "id": 3,
@@ -24,7 +28,9 @@
     "price": 950,
     "thumbnail": "Sin imagen",
     "code": "ghi789",
-    "stock": 20
+    "stock": 20,
+    "status": true,
+    "category": "Yerba"
   },
   {
     "id": 4,
@@ -33,7 +39,9 @@
     "price": 1300,
     "thumbnail": "Sin imagen",
     "code": "jkl012",
-    "stock": 10
+    "stock": 10,
+    "status": true,
+    "category": "Yerba"
   },
   {
     "id": 5,
@@ -42,7 +50,9 @@
     "price": 900,
     "thumbnail": "Sin imagen",
     "code": "mno345",
-    "stock": 30
+    "stock": 30,
+    "status": true,
+    "category": "Yerba"
   },
   {
     "id": 6,
@@ -51,7 +61,9 @@
     "price": 1400,
     "thumbnail": "Sin imagen",
     "code": "pqr678",
-    "stock": 5
+    "stock": 5,
+    "status": true,
+    "category": "Yerba"
   },
   {
     "id": 7,
@@ -60,7 +72,9 @@
     "price": 950,
     "thumbnail": "Sin imagen",
     "code": "stu901",
-    "stock": 15
+    "stock": 15,
+    "status": true,
+    "category": "Yerba"
   },
   {
     "id": 8,
@@ -69,7 +83,9 @@
     "price": 1350,
     "thumbnail": "Sin imagen",
     "code": "vwx234",
-    "stock": 8
+    "stock": 8,
+    "status": true,
+    "category": "Yerba"
   },
   {
     "id": 9,
@@ -78,7 +94,9 @@
     "price": 1000,
     "thumbnail": "Sin imagen",
     "code": "yza567",
-    "stock": 18
+    "stock": 18,
+    "status": true,
+    "category": "Yerba"
   },
   {
     "id": 10,
@@ -87,15 +105,8 @@
     "price": 1500,
     "thumbnail": "Sin imagen",
     "code": "bcd890",
-    "stock": 12
-  },
-  {
-    "id": "11",
-    "title": "Arroz Gallo",
-    "description": "Arroz Gallo 1/2kg",
-    "price": 400,
-    "thumbnail": "Sin imagen",
-    "code": "abx123",
-    "stock": 15
+    "stock": 12,
+    "status": true,
+    "category": "Yerba"
   }
 ]

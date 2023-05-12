@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Manager</title>
+</head>
+<body>
+    <h1>Ingresar un nuevo producto.</h1>
+    <form action="/products" method="post">
+        <div>
+            <label for="">Título</label>
+            <input type="text" name="title">
+        </div>
+        <div>
+            <label for="">Descripción</label>
+            <input type="text" name="description"> 
+        </div>
+        <div>
+            <label for="">Código</label>
+            <input type="text" name="code">
+        </div>
+        <div>
+            <label for="">Precio</label>
+            <input type="number" name="price"> 
+        </div>
+        <div>
+            <label for="">Estado</label>
+            <input type="boolean" name="status">
+        </div>
+        <div>
+            <label for="">Stock</label>
+            <input type="number" name="stock">
+        </div>
+        <div>
+            <label for="">Categoría</label>
+            <input type="text" name="category">
+        </div>
+        <div>
+            <label for="">Imagen</label>
+            <input type="text" name="thumbnail">    
+        </div>
+
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
