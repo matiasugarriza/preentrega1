@@ -91,22 +91,26 @@ class ProductManager {
         }
       }
     } catch (err) {
+      console.log(err)
       let updateError = 'Error al actualizar el producto.'
       return updateError
     }
 
   }
   async deleteProduct(id) {
-    let readFile = await fs.promises.readFile(this.path, "utf-8")
-    let products = JSON.parse(readFile)
-    const idProduct = products.find((product) => product.id == id)
-    const indexProduct = products.indexOf(idProduct)
-    if (indexProduct > 0) {
-      products.splice(indexProduct, 1)
-      fs.promises.writeFile(this.path, JSON.stringify(products, null, 2))
-      let sucessMenssage = 'Producto eliminado con éxito'
-      return await sucessMenssage
-    } else {
+    try{
+      let readFile = await fs.promises.readFile(this.path, "utf-8")
+      let products = JSON.parse(readFile)
+      const idProduct = products.find((product) => product.id == id)
+      const indexProduct = products.indexOf(idProduct)
+      if (indexProduct > 0) {
+        products.splice(indexProduct, 1)
+        fs.promises.writeFile(this.path, JSON.stringify(products, null, 2))
+        let sucessMenssage = 'Producto eliminado con éxito'
+        return await sucessMenssage
+      }
+    }catch(err){
+      console.log(err)
       let errorDelete = 'No existe ningún producto con ese ID'
       return await errorDelete
     }
