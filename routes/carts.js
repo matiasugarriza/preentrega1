@@ -47,6 +47,17 @@ router.delete('/:id', (req, res) => {
     })
 })
 
+router.delete('/:cid/product/:pid', (req, res) => {
+    let manager = new CartManager("./carts.json")
+    let cartRes = manager.deleteProduct(req.params['cid'], req.params['pid'])
+    cartRes.then(cart => {
+        let response = cart
+        res.send({ data: response, message: 'Carrito Actualizado' })
+    }).catch(err => {
+        console.log(err)
+    })
+})
+module.exports = router
 router.put('/:cid/product/:pid', (req, res) => {
     let manager = new CartManager("./carts.json")
     let cartRes = manager.updateCart(req.params['cid'], req.params['pid'])

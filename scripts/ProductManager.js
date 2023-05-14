@@ -42,7 +42,8 @@ class ProductManager {
           return newProduct
         }
       }
-    } catch {
+    } catch(err) {
+      console.log(err)
       let errorNewProduct = 'Error al guardar el producto'
       return errorNewProduct
     }
